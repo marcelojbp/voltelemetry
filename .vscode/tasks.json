@@ -12,6 +12,7 @@
                 "${workspaceFolder}/src/main.cpp",
                 "${workspaceFolder}/src/io/byte_reader.cpp",
                 "${workspaceFolder}/src/model/raw_frame.cpp",
+                "${workspaceFolder}/src/model/sweeper.cpp",
                 "-o",
                 "${workspaceFolder}/build/main"
             ],

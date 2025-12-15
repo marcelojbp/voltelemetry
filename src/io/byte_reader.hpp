@@ -14,9 +14,3 @@ struct ByteReader {
 	private:
 	std::ifstream file_;
 };
-
-// // Helper function to convert from byte to to unsigned 8-bit integer
-// inline std::uint8_t byte_value(std::byte b)
-// {
-//     return std::to_integer<std::uint8_t>(b);
-// }

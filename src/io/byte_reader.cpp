@@ -6,7 +6,6 @@ ByteReader::ByteReader(const std::string& path) : file_{path, std::ios::binary} 
         if(!file_) {
             // throw std::runtime_error("\n Failed to open file:" + path);
              throw std::runtime_error("\n Failed to open file: " + path );
-             
         }   
     }
 std::size_t ByteReader::read_some(std::byte* buffer, std::size_t buffer_size) {

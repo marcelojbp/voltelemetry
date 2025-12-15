@@ -9,9 +9,11 @@
 #include "io/byte_reader.hpp"
 #include "model/raw_frame.hpp"
 #include "model/frame_parser.hpp"
+#include "model/sweeper.hpp"
 #include <cstddef>   // std::byte
 #include <cstdint>   // uint8_t
 #include <utility>   // std::to_integer
+#include <vector>
 
 int main() {
   // read bytes
@@ -25,26 +27,20 @@ int main() {
         std::uint8_t b = byte_value(buffer[i]);
         printf("%02x ", static_cast<unsigned int>(b));
     }
-        for (std::size_t i{0}; i < bytes_read; ++i) {
-        std::uint8_t b = byte_value(buffer[i]);
-        if (b==0x5a && byte_value(buffer[i+1])==0xa5){
-          printf("\n Sync found at offset %zu", i);
-        }
-    }
 
-  // parse frames
   
-  RawFrame decoded_frame = decode_frame(buffer, 0);
-  printf("\n Timestamp %d", decoded_frame.timestamp);
-  printf("\n Speed %d", decoded_frame.speed);
-  printf("\n Voltage %d", decoded_frame.dc_voltage);
-  printf("\n Temperature %d", decoded_frame.temperature);
-  printf("\n Status %d \n", decoded_frame.status_flags);
-  
+  std::vector<RawFrame> vec_decoded_frames = sweep_bytes(buffer, bytes_read);
+  std::size_t n_frames = vec_decoded_frames.size();
+
+  printf("\n");
+  for (const auto& frame : vec_decoded_frames) {
+    printf("Timestamp: %d, Speed: %d, Voltage: %d\n", 
+         frame.timestamp, frame.speed, frame.dc_voltage);
+  }
 
   // for now, just a placeholder—we'll print a fake output summary
   // printf("________________________________________________________\n");
-  // printf("Frames received: 1234\n");
+  printf("Frames received: %zu \n", n_frames);
   // printf("Frames dropped (CRC): 12\n");
   // printf("Frames dropped (sync): 3\n \n");
   //  printf("Speed: \n \t min: 0 rpm\n \t max: 5000 rpm \n");

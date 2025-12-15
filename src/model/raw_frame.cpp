@@ -2,7 +2,7 @@
 #include "frame_parser.hpp"
 #include <cstddef>
 
-RawFrame decode_frame(const std::byte* p, size_t off){
+RawFrame decode_frame(std::byte* p, size_t off){
     RawFrame frame{};
     frame.sync_word = read_u16_le(p, off);
     frame.timestamp = read_u32_le(p, off + 2);

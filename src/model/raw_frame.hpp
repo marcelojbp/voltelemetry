@@ -12,4 +12,4 @@ struct RawFrame {
    std::uint8_t crc;
 };
 
-RawFrame decode_frame(const std::byte* p, size_t off);
+RawFrame decode_frame(std::byte* p, size_t off);
