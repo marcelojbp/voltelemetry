@@ -11,7 +11,7 @@
 int main() {
 
   // read bytes
-  ByteReader reader {"data/raw/telemetry.bin"};
+  ByteReader reader("data/raw/telemetry.bin");
 
   // parse frames
   // for now, just a placeholder—we'll print a fake output summary
