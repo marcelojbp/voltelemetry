@@ -1,3 +1,5 @@
+# This file sources some random data for us to handle with the program
+# To generate the data, just call python3 tools/gen_telemetry.py in the terminal 
 #!/usr/bin/env python3
 import struct
 import random
