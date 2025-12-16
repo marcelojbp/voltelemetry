@@ -1,13 +1,13 @@
 #pragma once
 #include <cstdint>
 
-struct Microseconds{ double timestamp; };
+struct Microseconds{ double value; };
 
-struct Volt { double dc_voltage; };
+struct Volt { double value; };
 
-struct Rpm  { double speed; };
+struct Rpm  { double value; };
 
-struct Celsius {double temperature; };
+struct Celsius {double value; };
 
 struct Status {
     bool overtemp;
