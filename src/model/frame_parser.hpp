@@ -20,4 +20,3 @@ inline std::uint16_t read_u16_le(const std::byte* b, size_t off){
 inline std::uint32_t read_u32_le(const std::byte* b, size_t off){
     return byte_value(b[off]);
 }
-
